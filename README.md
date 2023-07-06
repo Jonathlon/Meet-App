@@ -55,8 +55,8 @@ Then the number of events shown is 32 as default
 
 Scenario 2: User can change the number of events displayed. 
 Given the event list is displayed
-When the user wants to increase or reduce the number of events shown
-Then they can amend the number of events shown
+When the user wants to change the number of events shown
+Then the event list should be updated accordingly
 
 ## Feature 4: Use the App When Offline 
 
