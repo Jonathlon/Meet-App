@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Jonathlon/Meet-App.git/static/css/main.073c9b0a.css",
+    "main.js": "/Jonathlon/Meet-App.git/static/js/main.3dc5e9cb.js",
+    "static/js/787.4b564826.chunk.js": "/Jonathlon/Meet-App.git/static/js/787.4b564826.chunk.js",
+    "service-worker.js": "/Jonathlon/Meet-App.git/service-worker.js",
+    "static/media/logo.svg": "/Jonathlon/Meet-App.git/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/Jonathlon/Meet-App.git/index.html",
+    "main.073c9b0a.css.map": "/Jonathlon/Meet-App.git/static/css/main.073c9b0a.css.map",
+    "main.3dc5e9cb.js.map": "/Jonathlon/Meet-App.git/static/js/main.3dc5e9cb.js.map",
+    "787.4b564826.chunk.js.map": "/Jonathlon/Meet-App.git/static/js/787.4b564826.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.3dc5e9cb.js"
+  ]
+}
