@@ -4,6 +4,10 @@ Meet App is a serverless, progressive web application (PWA) with React using a t
 
 - [Live site URL](https://jonathlon.github.io/Meet-App/)
 
+## Serverless
+
+This app uses a serverless function deployed on Amazon AWS Lambda to authorize (OAuth 2.0) the user to make requests to the Google Calender API to search for upcoming events.
+
 ## Feature 1: Filter Events By City
 
 ### As a user I should be able to filter events by city so that I can see a list of events in that city.
