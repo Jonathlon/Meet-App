@@ -7,18 +7,23 @@ import { getEvents } from "../api";
 
 describe("<Event /> component", () => {
   let EventComponent;
-  const event = {};
+
+  let events;
+  beforeAll(async () => {
+    events = await getEvents();
+  });
+
   beforeEach(() => {
-    EventComponent = render(<Event event={event[0]} />);
+    EventComponent = render(<Event event={events[0]} />);
   });
   test("renders event location", () => {
-    expect(EventComponent.queryByText(event[0].location)).toBeInTheDocument();
+    expect(EventComponent.queryByText(events[0].location)).toBeInTheDocument();
   });
   test("renders event name", () => {
-    expect(EventComponent.queryByText(event[0].summary)).toBeInTheDocument();
+    expect(EventComponent.queryByText(events[0].summary)).toBeInTheDocument();
   });
   test("renders event time/date", () => {
-    expect(EventComponent.queryByText(event[0].created)).toBeInTheDocument();
+    expect(EventComponent.queryByText(events[0].created)).toBeInTheDocument();
   });
   test("renders event details button with the title (show details)", () => {
     expect(EventComponent.queryByText("show details")).toBeInTheDocument();

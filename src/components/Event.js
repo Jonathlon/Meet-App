@@ -9,7 +9,7 @@ const Event = ({ event }) => {
     <li>
       <div className="event">
         <div className="location">{event.location} </div>
-        <div className="dateTime">{event.start.dateTime}</div>
+        <div className="dateTime">{event.created}</div>
         <div className="name">{event.summary}</div>
         {showDetails && <div className="description">{event.description}</div>}
         <button className="details-btn" onClick={toggleDetails}>
