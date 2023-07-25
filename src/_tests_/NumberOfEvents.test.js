@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/prefer-screen-queries */
-import { render, within, waitFor } from "@testing-library/react";
+import { render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
 import App from "../App";
@@ -11,7 +11,7 @@ describe("<NumberOfEvents /> component", () => {
     const NOEcomponent = render(<NumberOfEvents eventNumber={32} />);
     const numberTextBox = NOEcomponent.queryByRole("textbox");
     expect(numberTextBox).toBeInTheDocument();
-    expect(numberTextBox).toHaveClass("textbox");
+    expect(numberTextBox).toHaveClass("NumberOfEventsInput");
   });
 
   test("by default, number of events is listed as 32", async () => {
@@ -23,16 +23,14 @@ describe("<NumberOfEvents /> component", () => {
   test("user can change number of events they wish to see listed", async () => {
     const user = userEvent.setup();
 
-    const handleEventNumberChange = jest.fn();
+    const setCurrentNOE = jest.fn();
     const NOEcomponent = render(
-      <NumberOfEvents
-        eventNumber={32}
-        onEventNumberChange={handleEventNumberChange}
-      />
+      <NumberOfEvents eventNumber={32} onEventNumberChange={setCurrentNOE} />
     );
     const numberTextBox = NOEcomponent.queryByPlaceholderText("Enter a number");
-    await user.type(numberTextBox, "10");
-    expect(handleEventNumberChange).toHaveBeenCalled();
+    await user.type(numberTextBox, "{backspace}{backspace}10");
+    expect(setCurrentNOE).toHaveBeenCalled();
+    expect(numberTextBox).toHaveValue("10");
   });
 });
 
@@ -46,5 +44,10 @@ describe("<NumberOfEvents /> integration", () => {
     const NumberOfEventsInput =
       within(NumberOfEventsDOM).queryByRole("textbox");
     await user.type(NumberOfEventsInput, "{backspace}{backspace}10");
+
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    const allRenderedEventItems =
+      within(EventListDOM).queryAllByRole("listitem");
+    expect(allRenderedEventItems.length).toBe(10);
   });
 });

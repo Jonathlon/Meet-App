@@ -1,7 +1,11 @@
 import React from "react";
+import { useState } from "react";
 
 const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
-  const handleInputChanged = (value) => {
+  const [inputValue, setInputValue] = useState("32");
+  const handleInputChanged = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
     onEventNumberChange(value);
   };
 
@@ -11,7 +15,7 @@ const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
         type="text"
         className="NumberOfEventsInput"
         placeholder="Enter a number"
-        value={eventNumber}
+        value={inputValue}
         onChange={handleInputChanged}
       />
     </div>
