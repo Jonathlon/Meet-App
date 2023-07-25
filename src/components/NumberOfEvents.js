@@ -9,7 +9,7 @@ const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
     <div id="number-of-events">
       <input
         type="text"
-        className="textbox"
+        className="NumberOfEventsInput"
         placeholder="Enter a number"
         value={eventNumber}
         onChange={handleInputChanged}
