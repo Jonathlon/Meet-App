@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
+const NumberOfEvents = ({ onEventNumberChange }) => {
   const [inputValue, setInputValue] = useState("32");
   const handleInputChanged = (e) => {
     const value = e.target.value;
