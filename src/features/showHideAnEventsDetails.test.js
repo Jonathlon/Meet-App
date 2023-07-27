@@ -26,7 +26,7 @@ defineFeature(feature, (test) => {
         const EventListItems = within(EventListDOM).queryAllByRole("listitem");
         expect(EventListItems.length).toBe(32);
 
-        const eventDetails = EventListDOM.querySelector(".show-details");
+        const eventDetails = EventListDOM.querySelector(".details");
         expect(eventDetails).not.toBeInTheDocument();
       });
     });
@@ -101,13 +101,14 @@ defineFeature(feature, (test) => {
       const user = userEvent.setup();
       eventDetails = EventListDOM.querySelector(".details");
 
-      const hideDetailsButton =
-        within(eventDetails).queryByText("hide details");
+      const hideDetailsButton = within(EventListItems[0]).queryByText(
+        "hide details"
+      );
       await user.click(hideDetailsButton);
     });
 
     then("the event element should collapse, hiding the event details", () => {
-      //   expect(eventDetails).not.toBeInTheDocument(); // This doesnt work and not sure why
+      expect(eventDetails).not.toBeInTheDocument();
     });
   });
 });

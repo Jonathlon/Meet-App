@@ -23,12 +23,11 @@ defineFeature(feature, (test) => {
 
     let NumberOfEventsDOM;
     let NOEInput;
-    when("the user doesn't specify the number of events visible", async () => {
+    when("the user doesn't specify the number of events visible", () => {});
+
+    then("the default number should be 32", async () => {
       NumberOfEventsDOM = AppDOM.querySelector("#number-of-events");
       NOEInput = within(NumberOfEventsDOM).queryByRole("textbox");
-    });
-
-    then("the default number should be 32", () => {
       expect(Number(NOEInput.value)).toBe(32);
     });
   });
