@@ -8,14 +8,18 @@ import App from "../App";
 
 describe("<NumberOfEvents /> component", () => {
   test("checks if element has the role of a text box", () => {
-    const NOEcomponent = render(<NumberOfEvents eventNumber={32} />);
+    const NOEcomponent = render(
+      <NumberOfEvents eventNumber={32} setErrorAlert={() => {}} />
+    );
     const numberTextBox = NOEcomponent.queryByRole("textbox");
     expect(numberTextBox).toBeInTheDocument();
     expect(numberTextBox).toHaveClass("NumberOfEventsInput");
   });
 
   test("by default, number of events is listed as 32", async () => {
-    const NOEcomponent = render(<NumberOfEvents eventNumber={32} />);
+    const NOEcomponent = render(
+      <NumberOfEvents eventNumber={32} setErrorAlert={() => {}} />
+    );
     const numberTextBox = NOEcomponent.queryByPlaceholderText("Enter a number");
     expect(numberTextBox).toHaveValue("32");
   });
@@ -25,7 +29,11 @@ describe("<NumberOfEvents /> component", () => {
 
     const setCurrentNOE = jest.fn();
     const NOEcomponent = render(
-      <NumberOfEvents eventNumber={32} onEventNumberChange={setCurrentNOE} />
+      <NumberOfEvents
+        eventNumber={32}
+        onEventNumberChange={setCurrentNOE}
+        setErrorAlert={() => {}}
+      />
     );
     const numberTextBox = NOEcomponent.queryByPlaceholderText("Enter a number");
     await user.type(numberTextBox, "{backspace}{backspace}10");
