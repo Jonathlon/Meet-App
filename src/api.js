@@ -25,7 +25,6 @@ const checkToken = async (accessToken) => {
   );
   const result = await response.json();
   if (result) {
-    NProgress.done();
     localStorage.setItem("lastEvents", JSON.stringify(result.events));
     return result.events;
   } else return null;
@@ -52,7 +51,7 @@ export const getEvents = async () => {
   }
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
-    NProgress.done();
+
     return events ? JSON.parse(events) : [];
   }
   const token = await getAccessToken();
