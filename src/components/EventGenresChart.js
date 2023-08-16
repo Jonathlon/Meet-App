@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 export const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([]);
@@ -52,15 +52,30 @@ export const EventGenresChart = ({ events }) => {
 
   return (
     <ResponsiveContainer width="99%" height={400}>
-      <PieChart>
+      <PieChart width={730} height={250}>
         <Pie
           data={data}
           dataKey="value"
+          outerRadius="80%"
           fill="#8884d8"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={130}
-        />
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index]} />
+          ))}
+        </Pie>
+        {data.map((entry, index) => (
+          <Legend
+            key={`legend-${index}`}
+            verticalAlign="bottom"
+            align="bottom"
+            wrapperStyle={{
+              WebkitTextStroke: `0.2px`,
+              background: "rgba(255, 255, 255, 0.5",
+            }}
+          />
+        ))}
       </PieChart>
     </ResponsiveContainer>
   );
